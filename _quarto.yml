@@ -3,12 +3,34 @@ project:
   output-dir: docs
 
 website:
-  title: "demosite"
+
+  sidebar:
+
+    style: "docked"
+    search: true
+    contents:
+      - "Data Science Projects"
+      - "index.qmd"
+    
+
   navbar:
+    background: primary
+    search: true
+    tools:
+      - icon: linkedin
+        href: https://linkedin.com
+      - icon: github
+        menu:
+          - text: Source Code
+            url:  https://github.com
+          - text: Report a Bug
+            url:  https://bugs.com
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - text: "Projects"
+        file: index.qmd
+      - text: "About"
+        file: about.qmd 
+      
 
 format:
   html:
