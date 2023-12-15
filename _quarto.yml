@@ -2,19 +2,21 @@ project:
   type: website
   output-dir: docs
 
+jupyter: python3
+
 website:
 
-  sidebar:
-
-    style: "docked"
-    search: true
-    contents:
-      - "Data Science Projects"
-      - "index.qmd"
-    
+  page-navigation: true
+  repo-url: https://github.com
+  
+  reader-mode: true
+  back-to-top-navigation: true
 
   navbar:
-    background: primary
+    title: 'Home'
+  
+    background: dark
+    foreground: secondary
     search: true
     tools:
       - icon: linkedin
@@ -26,17 +28,68 @@ website:
           - text: Report a Bug
             url:  https://bugs.com
     left:
+      - text: "Projects' overview"
+        file: overview.qmd
+   
       - text: "Projects"
-        file: index.qmd
-      - text: "About"
-        file: about.qmd 
+        file: MNIST.qmd
+
+
+        
+        
+
+  sidebar:
+
+    
+    - title: "Projects' overview"
+    
+      style: "floating"
+      alignment: left
+      border: true
+#    background: light
+      search: true
       
+      contents:
+        - section: "Overview of the projects"
+          contents:
+            - overview.qmd
+            - tutorial-2.qmd
+            - tutorial-3.qmd
+
+    - title: "Projects"
+    
+      contents:
+        - section: "Projects"
+          contents:
+            - MNIST.qmd
+            - project2.qmd
+            - project3.qmd
+ 
 
 format:
   html:
-    theme: cosmo
+    theme: default
     css: styles.css
+
+    
     toc: true
+    
+    smooth-scroll: true
+    anchor-sections: true
+    number-sections: true
+    page-layout: article
+    
+    code-copy: false
+    code-fold: show
+    code-overflow: wrap
+    code-tools:
+      source: https://linkedin.com
+      
+      
+    
+    
+    
+    
 
 
 
