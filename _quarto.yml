@@ -9,7 +9,7 @@ website:
   page-navigation: true
   repo-url: https://github.com
   
-  reader-mode: true
+  reader-mode: false
   back-to-top-navigation: true
 
   navbar:
@@ -73,6 +73,7 @@ format:
 
     
     toc: true
+    toc-title: Table of contents
     
     smooth-scroll: true
     anchor-sections: true
@@ -82,9 +83,7 @@ format:
     code-copy: false
     code-fold: show
     code-overflow: wrap
-    code-tools:
-      source: https://linkedin.com
-      
+
       
     
     

@@ -2,27 +2,26 @@
 ---
 title: "Nearest neighbor for handwritten digit recognition"
 jupyter: python3
-
-code-tools: true
 ---
 
 
 In this project we will build a classifier that takes an image of a
-handwritten digit and recognizes the digit present in the image. <br> We
+handwritten digit and recognizes the digit present in the image. We
 will look at a particularly simple strategy for this problem known as
 the **nearest neighbor(NN) classifier**.
+
 
 # The MNIST dataset
 
 we will use `MNIST` dataset to learn our nearest neighbor
-classifier.<br> `MNIST` is a classic dataset in machine learning,
+classifier.  `MNIST` is a classic dataset in machine learning,
 consisting of 28x28 gray-scale images of handwritten digits.
 
 Each data point i.e. handwritten digit image in the dataset is composed
-of 28 x 28 i.e 784 pixels <br> and is stored as a vector with 784
+of 28 x 28 i.e 784 pixels and is stored as a vector with 784
 co-ordinates/dimensions, where each co-ordinate has a numeric value
-ranging from 0 to 255.<br> Each image is also associated with a
-corresponding label indicating the digit it represents.<br> The labels
+ranging from 0 to 255.  Each image is also associated with a
+corresponding label indicating the digit it represents.  The labels
 range from 0 to 9, representing the ten possible digits.
 
 If x is the vector of an image and y is the label:
@@ -32,10 +31,10 @@ If x is the vector of an image and y is the label:
 -   Label space: $y = \{0.....9\}$, the label of the image
 
 The original `MNIST` training set contains 60,000 images and the test
-set contains 10,000 images,<br> but in this project we will be working
-with a subset of this data that was prepared before: <br><br> The
+set contains 10,000 images,  but in this project we will be working
+with a subset of this data that was prepared before:    The
 dataset consists of a training set of **7,500 images**, 750 images of
-each digit <br> and a test set of **1,000 images**, 100 images of each
+each digit   and a test set of **1,000 images**, 100 images of each
 digit.
 
 # Load in the modules and the dataset
@@ -91,7 +90,7 @@ print(dict(zip(test_digits, test_counts)))
 ```
 
 So we have 750 images of 0-9 digit each with a total of 7500 images in
-the training set <br> and 100 images of 0-9 digit each with a total of
+the training set   and 100 images of 0-9 digit each with a total of
 1000 images in the test set.
 
 # Visualize the data
@@ -100,7 +99,7 @@ To visualize a data point, we need to first reshape the 784-dimensional
 vector into a 28x28 image.
 
 we will define a function `vis_image()` where it in turn uses
-`show_digit()` function <br> that displays an image of the digit when
+`show_digit()` function   that displays an image of the digit when
 vector representation form of a digit is given as input.
 
 ```{python}
@@ -129,7 +128,7 @@ def vis_image(index, dataset="train"):
 
 ```
 
-Now that we have defined a function for visualizing the image, <br> lets
+Now that we have defined a function for visualizing the image,   lets
 test it by applying it on first data points in training set and test
 set.
 
@@ -150,7 +149,7 @@ vis_image(0, "test")
 # Compute squared euclidean distance
 
 To compute nearest neighbors in our data set, we need to first be able
-to compute distances between data points (i.e. images here) <br> and the
+to compute distances between data points (i.e. images here)   and the
 most common, or default distance function is perhaps just Euclidean
 distance.
 
@@ -194,7 +193,7 @@ print(f"Distance from digit {train_labels[4]} to digit {train_labels[7]} in our 
 Now that we have a distance function defined, we can now turn to nearest
 neighbor classification.
 
-we define `find_NN()` and `NN_classifier()` functions <br> to find the
+we define `find_NN()` and `NN_classifier()` functions   to find the
 nearest neighbour image for a given image `x` i.e. the image that has
 least squared euclidean distance and returns its label.
 
@@ -226,7 +225,7 @@ def NN_classifier(x):
 # Apply NN classifier on full test set
 
 Now let's apply our nearest neighbor classifier over the full test data
-set.<br>
+set. 
 
 ```{python}
 ## Predict on each test data point and time it!
@@ -239,7 +238,7 @@ t_after = time.time()
 ## Compute the classification time of NN
 
 Note that to classify each single test image in the test dataset of 1000
-images,<br> NN classifier goes through the entire training set of 7500
+images,  NN classifier goes through the entire training set of 7500
 images to find the NN image for that test image.
 
 Thus we should not expect testing to be very fast.
@@ -261,7 +260,7 @@ error = float(np.sum(err_positions))/len(test_labels)
 print(f"Error rate of nearest neighbor classifier: {error * 100} %")
 ```
 
-# Improving NN neighbors
+# Improving nearest neighbors
 
 we found that NN classifier has given pretty reasonable performance, an
 error rate of 4.06% on a separate test set.
