@@ -127,23 +127,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Projects</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
-    <a href="https://linkedin.com" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
-    <div class="dropdown">
-      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-github"></i></a>
-      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item quarto-navbar-tools ms-auto-item" href="https://github.com">
-            Source Code
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item quarto-navbar-tools ms-auto-item" href="https://bugs.com">
-            Report a Bug
-            </a>
-          </li>
-      </ul>
-    </div>
+            <div class="quarto-navbar-tools ms-auto tools-wide">
+    <a href="https://linkedin.com" rel="" title="Linkedin" class="quarto-navigation-tool px-1" aria-label="Linkedin"><i class="bi bi-linkedin"></i></a>
+    <a href="https://github.com" rel="" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+    <a href="mailto:rams9795@gmail.com" rel="" title="Gmail" class="quarto-navigation-tool px-1" aria-label="Gmail"><i class="bi bi-envelope"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
@@ -156,9 +143,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./MNIST.html">Projects</a></li><li class="breadcrumb-item"><a href="./MNIST.html">Nearest neighbor for handwritten digit recognition</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
     </div>
   </nav>
 </header>
@@ -166,11 +150,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
@@ -505,7 +484,7 @@ Distance from digit 7 to digit 7 in our training set: 5223403.0</code></pre>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Classification time of NN classifier: </span><span class="sc">{</span><span class="bu">round</span>(t_after <span class="op">-</span> t_before, <span class="dv">2</span>)<span class="sc">}</span><span class="ss"> sec"</span>)</span></code></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Classification time of NN classifier: 43.37 sec</code></pre>
+<pre><code>Classification time of NN classifier: 75.92 sec</code></pre>
 </div>
 </div>
 <p>The code takes about 60-100 seconds on 1.70 GHz Intel Core i7 Laptop.</p>
@@ -585,9 +564,9 @@ Distance from digit 7 to digit 7 in our training set: 5223403.0</code></pre>
 <span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Ball tree produces same predictions as NN? "</span>, np.array_equal(test_predictions, ball_tree_predictions))</span></code></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time to build data structure (seconds):  0.45
-Time to classify test set (seconds):  4.76
-Overall classififcation time of Ball tree algorithm (seconds): 5.21
+<pre><code>Time to build data structure (seconds):  0.84
+Time to classify test set (seconds):  9.2
+Overall classififcation time of Ball tree algorithm (seconds): 10.04
 
 Ball tree produces same predictions as NN?  True</code></pre>
 </div>
@@ -627,9 +606,9 @@ Ball tree produces same predictions as NN?  True</code></pre>
 <span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"KD tree produces same predictions as NN? "</span>, np.array_equal(test_predictions, kd_tree_predictions))</span></code></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time to build data structure (seconds):  0.68
-Time to classify test set (seconds):  5.42
-Overall classififcation time of k-d tree algorithm (seconds): 6.1
+<pre><code>Time to build data structure (seconds):  1.4
+Time to classify test set (seconds):  11.45
+Overall classififcation time of k-d tree algorithm (seconds): 12.85
 
 KD tree produces same predictions as NN?  True</code></pre>
 </div>

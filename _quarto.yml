@@ -17,16 +17,20 @@ website:
   
     background: dark
     foreground: secondary
-    search: true
+    search: false
+
     tools:
       - icon: linkedin
+        text: Linkedin
         href: https://linkedin.com
       - icon: github
-        menu:
-          - text: Source Code
-            url:  https://github.com
-          - text: Report a Bug
-            url:  https://bugs.com
+        text: GitHub
+        href: https://github.com
+      - icon: envelope
+        text: Gmail
+        href: mailto:rams9795@gmail.com
+        
+
     left:
       - text: "Projects' overview"
         file: overview.qmd
@@ -47,7 +51,7 @@ website:
       alignment: left
       border: true
 #    background: light
-      search: true
+      search: false
       
       contents:
         - section: "Overview of the projects"

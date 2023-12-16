@@ -8,6 +8,12 @@ about:
     - icon: linkedin
       text: Linkedin
       href: https://linkedin.com
+    - icon: github
+      text: GitHub
+      href: https://github.com      
+    - icon: envelope
+      text: Gmail
+      href: mailto:rams9795@gmail.com
     # (additional links excluded for brevity)
 
 sidebar: false
