@@ -1,0 +1,15 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/MNIST.html"
+    ]
+  },
+  {
+    "listing": "/MNIST.html",
+    "items": [
+      "/index.html",
+      "/overview.html"
+    ]
+  }
+]

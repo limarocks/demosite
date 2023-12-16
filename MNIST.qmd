@@ -2,6 +2,7 @@
 ---
 title: "Nearest neighbor for handwritten digit recognition"
 jupyter: python3
+
 ---
 
 

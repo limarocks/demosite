@@ -1,9 +1,21 @@
 ---
-title: "Home page"
+title: Sai Ram Kuchana
 jupyter: python3
+#image: profile.webp
+
+format:
+  html:
+    toc: false
+    number-sections: false
+    back-to-top-navigation: false
 
 about:
-  template: jolla
+  template: trestles
+  
+#  image-shape: round
+
+#  image-width: 15em
+  
   links:
     - icon: linkedin
       text: Linkedin
@@ -12,12 +24,54 @@ about:
       text: GitHub
       href: https://github.com      
     - icon: envelope
-      text: Gmail
+      text: Email
       href: mailto:rams9795@gmail.com
     # (additional links excluded for brevity)
-
+  
+  id: ppc
+    
 sidebar: false
+
+listing:
+  
+  - id: overview
+    contents: "MNIST.qmd"
+    type: grid
+    fields: [image, title]
+    
+  - id: full-project
+    contents: "MNIST.qmd"
+    fields: [image, title]
+    type: grid
 
 ---
 
-About this site
+
+:::{#ppc}
+
+Hi, I'm Ram !
+
+
+I have newly developed passion for coding and mathematics especially related to data science.
+
+Here I post my projects whenever I have done something new and got time.
+
+:::
+
+
+::: {.panel-tabset}
+
+## Overview Data Science Projects
+
+:::{#overview}
+:::
+
+
+## Full DS projects
+
+:::{#full-project}
+:::
+
+:::
+
+

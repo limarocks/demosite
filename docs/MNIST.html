@@ -130,7 +130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <div class="quarto-navbar-tools ms-auto tools-wide">
     <a href="https://linkedin.com" rel="" title="Linkedin" class="quarto-navigation-tool px-1" aria-label="Linkedin"><i class="bi bi-linkedin"></i></a>
     <a href="https://github.com" rel="" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
-    <a href="mailto:rams9795@gmail.com" rel="" title="Gmail" class="quarto-navigation-tool px-1" aria-label="Gmail"><i class="bi bi-envelope"></i></a>
+    <a href="mailto:rams9795@gmail.com" rel="" title="Email" class="quarto-navigation-tool px-1" aria-label="Email"><i class="bi bi-envelope"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
@@ -484,7 +484,7 @@ Distance from digit 7 to digit 7 in our training set: 5223403.0</code></pre>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Classification time of NN classifier: </span><span class="sc">{</span><span class="bu">round</span>(t_after <span class="op">-</span> t_before, <span class="dv">2</span>)<span class="sc">}</span><span class="ss"> sec"</span>)</span></code></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Classification time of NN classifier: 75.92 sec</code></pre>
+<pre><code>Classification time of NN classifier: 23.35 sec</code></pre>
 </div>
 </div>
 <p>The code takes about 60-100 seconds on 1.70 GHz Intel Core i7 Laptop.</p>
@@ -564,9 +564,9 @@ Distance from digit 7 to digit 7 in our training set: 5223403.0</code></pre>
 <span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Ball tree produces same predictions as NN? "</span>, np.array_equal(test_predictions, ball_tree_predictions))</span></code></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time to build data structure (seconds):  0.84
-Time to classify test set (seconds):  9.2
-Overall classififcation time of Ball tree algorithm (seconds): 10.04
+<pre><code>Time to build data structure (seconds):  0.31
+Time to classify test set (seconds):  4.0
+Overall classififcation time of Ball tree algorithm (seconds): 4.31
 
 Ball tree produces same predictions as NN?  True</code></pre>
 </div>
@@ -606,9 +606,9 @@ Ball tree produces same predictions as NN?  True</code></pre>
 <span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"KD tree produces same predictions as NN? "</span>, np.array_equal(test_predictions, kd_tree_predictions))</span></code></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time to build data structure (seconds):  1.4
-Time to classify test set (seconds):  11.45
-Overall classififcation time of k-d tree algorithm (seconds): 12.85
+<pre><code>Time to build data structure (seconds):  0.51
+Time to classify test set (seconds):  4.6
+Overall classififcation time of k-d tree algorithm (seconds): 5.11
 
 KD tree produces same predictions as NN?  True</code></pre>
 </div>

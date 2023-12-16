@@ -4,6 +4,9 @@ project:
 
 jupyter: python3
 
+#execute:
+#  freeze: auto
+
 website:
 
   page-navigation: true
@@ -27,7 +30,7 @@ website:
         text: GitHub
         href: https://github.com
       - icon: envelope
-        text: Gmail
+        text: Email
         href: mailto:rams9795@gmail.com
         
 

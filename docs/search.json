@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Home page",
+    "title": "Sai Ram Kuchana",
     "section": "",
-    "text": "About this site\n\n\n Back to top"
+    "text": "Linkedin\n  \n  \n    \n     GitHub\n  \n  \n    \n     Email\n  \n\n  \n  \nHi, I’m Ram !\nI have newly developed passion for coding and mathematics especially related to data science.\nHere I post my projects whenever I have done something new and got time.\n\n\n\n\nOverview Data Science ProjectsFull DS projects\n\n\n\n\n\n\n\n\n\n\nNearest neighbor for handwritten digit recognition\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\n\n\nNearest neighbor for handwritten digit recognition\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -142,7 +142,7 @@
   {
     "objectID": "overview.html",
     "href": "overview.html",
-    "title": "Nearest neighbor for handwritten digit recognition",
+    "title": "",
     "section": "",
     "text": "Back to top"
   },
@@ -179,7 +179,7 @@
     "href": "MNIST.html#compute-the-classification-time-of-nn",
     "title": "Nearest neighbor for handwritten digit recognition",
     "section": "6.1 Compute the classification time of NN",
-    "text": "6.1 Compute the classification time of NN\nNote that to classify each single test image in the test dataset of 1000 images, NN classifier goes through the entire training set of 7500 images to find the NN image for that test image.\nThus we should not expect testing to be very fast.\n\n\nCode\n## Compute the classification time of NN classifier\n\nprint(f\"Classification time of NN classifier: {round(t_after - t_before, 2)} sec\")\n\n\nClassification time of NN classifier: 75.92 sec\n\n\nThe code takes about 60-100 seconds on 1.70 GHz Intel Core i7 Laptop."
+    "text": "6.1 Compute the classification time of NN\nNote that to classify each single test image in the test dataset of 1000 images, NN classifier goes through the entire training set of 7500 images to find the NN image for that test image.\nThus we should not expect testing to be very fast.\n\n\nCode\n## Compute the classification time of NN classifier\n\nprint(f\"Classification time of NN classifier: {round(t_after - t_before, 2)} sec\")\n\n\nClassification time of NN classifier: 23.35 sec\n\n\nThe code takes about 60-100 seconds on 1.70 GHz Intel Core i7 Laptop."
   },
   {
     "objectID": "MNIST.html#compute-the-error-rate-of-nn",
@@ -193,7 +193,7 @@
     "href": "MNIST.html#faster-nearest-neighbor-methods",
     "title": "Nearest neighbor for handwritten digit recognition",
     "section": "7.1 Faster nearest neighbor methods:",
-    "text": "7.1 Faster nearest neighbor methods:\n\n7.1.1 Ball tree algorithm\n\n\nCode\nfrom sklearn.neighbors import BallTree\n\n## Build nearest neighbor structure on training data\nt_before = time.time()\nball_tree = BallTree(train_data)\nt_after = time.time()\n\n## Compute training time\nt_training = t_after - t_before\nprint(\"Time to build data structure (seconds): \", round(t_training, 2))\n\n## Get nearest neighbor predictions on testing data\nt_before = time.time()\ntest_neighbors = np.squeeze(ball_tree.query(test_data, k=1, return_distance=False))\nball_tree_predictions = train_labels[test_neighbors]\nt_after = time.time()\n\n## Compute testing time\nt_testing = t_after - t_before\nprint(\"Time to classify test set (seconds): \", round(t_testing, 2))\n\n## total classification time\n\nprint(\"Overall classififcation time of Ball tree algorithm (seconds):\", round(t_training+t_testing, 2), end = '\\n\\n')\n\n## Verify that the predictions are the same\nprint(\"Ball tree produces same predictions as NN? \", np.array_equal(test_predictions, ball_tree_predictions))\n\n\nTime to build data structure (seconds):  0.84\nTime to classify test set (seconds):  9.2\nOverall classififcation time of Ball tree algorithm (seconds): 10.04\n\nBall tree produces same predictions as NN?  True\n\n\n\n\n7.1.2 k-d tree algorithm\n\n\nCode\nfrom sklearn.neighbors import KDTree\n\n## Build nearest neighbor structure on training data\nt_before = time.time()\nkd_tree = KDTree(train_data)\nt_after = time.time()\n\n## Compute training time\nt_training = t_after - t_before\nprint(\"Time to build data structure (seconds): \", round(t_training, 2))\n\n## Get nearest neighbor predictions on testing data\nt_before = time.time()\ntest_neighbors = np.squeeze(kd_tree.query(test_data, k=1, return_distance=False))\nkd_tree_predictions = train_labels[test_neighbors]\nt_after = time.time()\n\n## Compute testing time\nt_testing = t_after - t_before\nprint(\"Time to classify test set (seconds): \", round(t_testing, 2))\n\n## total classification time\n\nprint(\"Overall classififcation time of k-d tree algorithm (seconds):\", round(t_training+t_testing, 2), end = '\\n\\n')\n\n## Verify that the predictions are the same\nprint(\"KD tree produces same predictions as NN? \", np.array_equal(test_predictions, kd_tree_predictions))\n\n\nTime to build data structure (seconds):  1.4\nTime to classify test set (seconds):  11.45\nOverall classififcation time of k-d tree algorithm (seconds): 12.85\n\nKD tree produces same predictions as NN?  True"
+    "text": "7.1 Faster nearest neighbor methods:\n\n7.1.1 Ball tree algorithm\n\n\nCode\nfrom sklearn.neighbors import BallTree\n\n## Build nearest neighbor structure on training data\nt_before = time.time()\nball_tree = BallTree(train_data)\nt_after = time.time()\n\n## Compute training time\nt_training = t_after - t_before\nprint(\"Time to build data structure (seconds): \", round(t_training, 2))\n\n## Get nearest neighbor predictions on testing data\nt_before = time.time()\ntest_neighbors = np.squeeze(ball_tree.query(test_data, k=1, return_distance=False))\nball_tree_predictions = train_labels[test_neighbors]\nt_after = time.time()\n\n## Compute testing time\nt_testing = t_after - t_before\nprint(\"Time to classify test set (seconds): \", round(t_testing, 2))\n\n## total classification time\n\nprint(\"Overall classififcation time of Ball tree algorithm (seconds):\", round(t_training+t_testing, 2), end = '\\n\\n')\n\n## Verify that the predictions are the same\nprint(\"Ball tree produces same predictions as NN? \", np.array_equal(test_predictions, ball_tree_predictions))\n\n\nTime to build data structure (seconds):  0.31\nTime to classify test set (seconds):  4.0\nOverall classififcation time of Ball tree algorithm (seconds): 4.31\n\nBall tree produces same predictions as NN?  True\n\n\n\n\n7.1.2 k-d tree algorithm\n\n\nCode\nfrom sklearn.neighbors import KDTree\n\n## Build nearest neighbor structure on training data\nt_before = time.time()\nkd_tree = KDTree(train_data)\nt_after = time.time()\n\n## Compute training time\nt_training = t_after - t_before\nprint(\"Time to build data structure (seconds): \", round(t_training, 2))\n\n## Get nearest neighbor predictions on testing data\nt_before = time.time()\ntest_neighbors = np.squeeze(kd_tree.query(test_data, k=1, return_distance=False))\nkd_tree_predictions = train_labels[test_neighbors]\nt_after = time.time()\n\n## Compute testing time\nt_testing = t_after - t_before\nprint(\"Time to classify test set (seconds): \", round(t_testing, 2))\n\n## total classification time\n\nprint(\"Overall classififcation time of k-d tree algorithm (seconds):\", round(t_training+t_testing, 2), end = '\\n\\n')\n\n## Verify that the predictions are the same\nprint(\"KD tree produces same predictions as NN? \", np.array_equal(test_predictions, kd_tree_predictions))\n\n\nTime to build data structure (seconds):  0.51\nTime to classify test set (seconds):  4.6\nOverall classififcation time of k-d tree algorithm (seconds): 5.11\n\nKD tree produces same predictions as NN?  True"
   },
   {
     "objectID": "projects.html",
@@ -208,5 +208,33 @@
     "title": "Nearest neighbor for handwritten digit recognition",
     "section": "",
     "text": "Back to top"
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "This content appears above the formatted about page content.",
+    "section": "",
+    "text": "University of California, San Diego | San Diego, CA PhD in Mathematics | Sept 2011 - June 2015\nMacalester College | St. Paul MA B.A in Economics | Sept 2007 - June 2011"
+  },
+  {
+    "objectID": "index.html#experience",
+    "href": "index.html#experience",
+    "title": "This content appears above the formatted about page content.",
+    "section": "",
+    "text": "Wengo Analytics | Head Data Scientist | April 2018 - present\nGeoScynce | Chief Analyst | Sept 2012 - April 2018"
+  },
+  {
+    "objectID": "index.html#data-science-projects",
+    "href": "index.html#data-science-projects",
+    "title": "Sai Ram Kuchana",
+    "section": "Data Science Projects",
+    "text": "Data Science Projects"
+  },
+  {
+    "objectID": "index.html#other-projects",
+    "href": "index.html#other-projects",
+    "title": "omg",
+    "section": "Other projects",
+    "text": "Other projects"
   }
 ]
