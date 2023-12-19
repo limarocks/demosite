@@ -59,7 +59,7 @@ Here I post my projects whenever I have done something new and got time.
 :::
 
 
-::: {.panel-tabset}
+
 
 ## Overview Data Science Projects
 
@@ -72,6 +72,6 @@ Here I post my projects whenever I have done something new and got time.
 :::{#full-project}
 :::
 
-:::
+
 
 
