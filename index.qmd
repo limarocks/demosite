@@ -1,7 +1,7 @@
 ---
 title: Sai Ram Kuchana
 jupyter: python3
-#image: profile.webp
+image: profilepic.JPG
 
 format:
   html:
@@ -12,9 +12,9 @@ format:
 about:
   template: trestles
   
-#  image-shape: round
+  image-shape: round
 
-#  image-width: 15em
+  image-width: 15em
   
   links:
     - icon: linkedin
