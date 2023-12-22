@@ -61,16 +61,12 @@ Here I post my projects whenever I have done something new and got time.
 
 
 
-## Overview Data Science Projects
+## Projects
 
 :::{#overview}
 :::
 
 
-## Full DS projects
-
-:::{#full-project}
-:::
 
 
 
