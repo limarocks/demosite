@@ -39,11 +39,6 @@ listing:
     type: grid
     fields: [image, title]
     
-  - id: full-project
-    contents: "MNIST.qmd"
-    fields: [image, title]
-    type: grid
-
 ---
 
 
