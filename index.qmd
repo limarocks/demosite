@@ -47,9 +47,8 @@ listing:
 Hi, I'm Ram !
 
 
-I have newly developed passion for coding and mathematics especially related to data science.
-
-Here I post my projects whenever I have done something new and got time.
+I have newly developed passion for Data science and coding.
+Here, I post my projects whenever i have done something and got time.
 
 :::
 
