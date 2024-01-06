@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Sai Ram Kuchana",
     "section": "",
-    "text": "Linkedin\n  \n  \n    \n     GitHub\n  \n  \n    \n     Email\n  \n\n  \n  \nHi, I’m Ram !\nI have newly developed passion for Data science and coding. Here, I post my projects whenever i have done something and got time."
+    "text": "Linkedin\n  \n  \n    \n     Email\n  \n\n  \n  \nHi, I’m Ram !\nI have newly developed passion for Data science and coding. Here, I post my projects whenever i have done something and got time."
   },
   {
     "objectID": "about.html",
@@ -257,5 +257,61 @@
     "title": "Sai Ram Kuchana",
     "section": "Projects",
     "text": "Projects\n\n\n\n\n\n\n\n\nNearest neighbor for handwritten digit recognition\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "projects/MNIST/MNIST.html",
+    "href": "projects/MNIST/MNIST.html",
+    "title": "Nearest neighbor for handwritten digit recognition",
+    "section": "",
+    "text": "In this project we will build a classifier that takes an image of a handwritten digit and recognizes the digit present in the image. We will look at a particularly simple strategy for this problem known as the nearest neighbor(NN) classifier."
+  },
+  {
+    "objectID": "projects/MNIST/MNIST.html#dimensions-of-the-training-and-the-test-set",
+    "href": "projects/MNIST/MNIST.html#dimensions-of-the-training-and-the-test-set",
+    "title": "Nearest neighbor for handwritten digit recognition",
+    "section": "2.1 Dimensions of the training and the test set",
+    "text": "2.1 Dimensions of the training and the test set\n\n\nCode\n## Print out their dimensions\n\nprint(\"Training dataset dimensions: \", np.shape(train_data))\nprint(\"Number of training labels: \", len(train_labels), end='\\n\\n')\n\nprint(\"Testing dataset dimensions: \", np.shape(test_data))\nprint(\"Number of testing labels: \", len(test_labels))\n\n\nTraining dataset dimensions:  (7500, 784)\nNumber of training labels:  7500\n\nTesting dataset dimensions:  (1000, 784)\nNumber of testing labels:  1000"
+  },
+  {
+    "objectID": "projects/MNIST/MNIST.html#compute-the-number-of-images-of-each-digit",
+    "href": "projects/MNIST/MNIST.html#compute-the-number-of-images-of-each-digit",
+    "title": "Nearest neighbor for handwritten digit recognition",
+    "section": "2.2 Compute the number of images of each digit",
+    "text": "2.2 Compute the number of images of each digit\n\n\nCode\n## Compute the number of images of each digit\n\n\ntrain_digits, train_counts = np.unique(train_labels, return_counts=True)\nprint(\"Training set distribution:\")\nprint(dict(zip(train_digits, train_counts)), end='\\n\\n')\n\ntest_digits, test_counts = np.unique(test_labels, return_counts=True)\nprint(\"Test set distribution:\")\nprint(dict(zip(test_digits, test_counts)))\n\n\nTraining set distribution:\n{0: 750, 1: 750, 2: 750, 3: 750, 4: 750, 5: 750, 6: 750, 7: 750, 8: 750, 9: 750}\n\nTest set distribution:\n{0: 100, 1: 100, 2: 100, 3: 100, 4: 100, 5: 100, 6: 100, 7: 100, 8: 100, 9: 100}\n\n\nSo we have 750 images of 0-9 digit each with a total of 7500 images in the training set and 100 images of 0-9 digit each with a total of 1000 images in the test set."
+  },
+  {
+    "objectID": "projects/MNIST/MNIST.html#view-the-first-data-point-in-the-training-set-and-test-set",
+    "href": "projects/MNIST/MNIST.html#view-the-first-data-point-in-the-training-set-and-test-set",
+    "title": "Nearest neighbor for handwritten digit recognition",
+    "section": "3.1 View the first data point in the training set and test set",
+    "text": "3.1 View the first data point in the training set and test set\n\n\nCode\n## View the first data point in the training set\n\nvis_image(0, \"train\")\n\n\n\n\n\n            Label 9\n\n\n\n\nCode\n## Now view the first data point in the test set\n\nvis_image(0, \"test\")\n\n\n\n\n\n            Label 0"
+  },
+  {
+    "objectID": "projects/MNIST/MNIST.html#examples-of-computing-squared-euclidean-distance",
+    "href": "projects/MNIST/MNIST.html#examples-of-computing-squared-euclidean-distance",
+    "title": "Nearest neighbor for handwritten digit recognition",
+    "section": "4.1 Examples of computing squared euclidean distance",
+    "text": "4.1 Examples of computing squared euclidean distance\n\n\nCode\nprint('Examples:\\n')\n\n## Computing distances between digits in our training set.\n\nprint(f\"Distance from digit {train_labels[4]} to digit {train_labels[5]} in our training set: {squared_dist(train_data[4],train_data[5])}\")\n\n\nprint(f\"Distance from digit {train_labels[4]} to digit {train_labels[1]} in our training set: {squared_dist(train_data[4],train_data[1])}\")\n\n\nprint(f\"Distance from digit {train_labels[4]} to digit {train_labels[7]} in our training set: {squared_dist(train_data[4],train_data[7])}\")\n\n\nExamples:\n\nDistance from digit 7 to digit 1 in our training set: 5357193.0\nDistance from digit 7 to digit 2 in our training set: 12451684.0\nDistance from digit 7 to digit 7 in our training set: 5223403.0"
+  },
+  {
+    "objectID": "projects/MNIST/MNIST.html#compute-the-classification-time-of-nn",
+    "href": "projects/MNIST/MNIST.html#compute-the-classification-time-of-nn",
+    "title": "Nearest neighbor for handwritten digit recognition",
+    "section": "6.1 Compute the classification time of NN",
+    "text": "6.1 Compute the classification time of NN\nNote that to classify each single test image in the test dataset of 1000 images, NN classifier goes through the entire training set of 7500 images to find the NN image for that test image.\nThus we should not expect testing to be very fast.\n\n\nCode\n## Compute the classification time of NN classifier\n\nprint(f\"Classification time of NN classifier: {round(t_after - t_before, 2)} sec\")\n\n\nClassification time of NN classifier: 42.0 sec\n\n\nThe code takes about 60-100 seconds on 1.70 GHz Intel Core i7 Laptop."
+  },
+  {
+    "objectID": "projects/MNIST/MNIST.html#compute-the-error-rate-of-nn",
+    "href": "projects/MNIST/MNIST.html#compute-the-error-rate-of-nn",
+    "title": "Nearest neighbor for handwritten digit recognition",
+    "section": "6.2 Compute the error rate of NN",
+    "text": "6.2 Compute the error rate of NN\n\n\nCode\nerr_positions = np.not_equal(test_predictions, test_labels)\nerror = float(np.sum(err_positions))/len(test_labels)\n\nprint(f\"Error rate of nearest neighbor classifier: {error * 100} %\")\n\n\nError rate of nearest neighbor classifier: 4.6 %"
+  },
+  {
+    "objectID": "projects/MNIST/MNIST.html#faster-nearest-neighbor-methods",
+    "href": "projects/MNIST/MNIST.html#faster-nearest-neighbor-methods",
+    "title": "Nearest neighbor for handwritten digit recognition",
+    "section": "7.1 Faster nearest neighbor methods:",
+    "text": "7.1 Faster nearest neighbor methods:\n\n7.1.1 Ball tree algorithm\n\n\nCode\nfrom sklearn.neighbors import BallTree\n\n## Build nearest neighbor structure on training data\nt_before = time.time()\nball_tree = BallTree(train_data)\nt_after = time.time()\n\n## Compute training time\nt_training = t_after - t_before\nprint(\"Time to build data structure (seconds): \", round(t_training, 2))\n\n## Get nearest neighbor predictions on testing data\nt_before = time.time()\ntest_neighbors = np.squeeze(ball_tree.query(test_data, k=1, return_distance=False))\nball_tree_predictions = train_labels[test_neighbors]\nt_after = time.time()\n\n## Compute testing time\nt_testing = t_after - t_before\nprint(\"Time to classify test set (seconds): \", round(t_testing, 2))\n\n## total classification time\n\nprint(\"Overall classififcation time of Ball tree algorithm (seconds):\", round(t_training+t_testing, 2), end = '\\n\\n')\n\n## Verify that the predictions are the same\nprint(\"Ball tree produces same predictions as NN? \", np.array_equal(test_predictions, ball_tree_predictions))\n\n\nTime to build data structure (seconds):  0.53\nTime to classify test set (seconds):  5.61\nOverall classififcation time of Ball tree algorithm (seconds): 6.13\n\nBall tree produces same predictions as NN?  True\n\n\n\n\n7.1.2 k-d tree algorithm\n\n\nCode\nfrom sklearn.neighbors import KDTree\n\n## Build nearest neighbor structure on training data\nt_before = time.time()\nkd_tree = KDTree(train_data)\nt_after = time.time()\n\n## Compute training time\nt_training = t_after - t_before\nprint(\"Time to build data structure (seconds): \", round(t_training, 2))\n\n## Get nearest neighbor predictions on testing data\nt_before = time.time()\ntest_neighbors = np.squeeze(kd_tree.query(test_data, k=1, return_distance=False))\nkd_tree_predictions = train_labels[test_neighbors]\nt_after = time.time()\n\n## Compute testing time\nt_testing = t_after - t_before\nprint(\"Time to classify test set (seconds): \", round(t_testing, 2))\n\n## total classification time\n\nprint(\"Overall classififcation time of k-d tree algorithm (seconds):\", round(t_training+t_testing, 2), end = '\\n\\n')\n\n## Verify that the predictions are the same\nprint(\"KD tree produces same predictions as NN? \", np.array_equal(test_predictions, kd_tree_predictions))\n\n\nTime to build data structure (seconds):  0.69\nTime to classify test set (seconds):  5.54\nOverall classififcation time of k-d tree algorithm (seconds): 6.23\n\nKD tree produces same predictions as NN?  True"
   }
 ]

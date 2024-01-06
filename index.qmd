@@ -1,7 +1,7 @@
 ---
 title: Sai Ram Kuchana
 jupyter: python3
-image: profilepic.JPG
+image: pictures/profilepic.JPG
 
 format:
   html:
@@ -20,9 +20,9 @@ about:
     - icon: linkedin
       text: Linkedin
       href: https://linkedin.com
-    - icon: github
-      text: GitHub
-      href: https://github.com      
+#    - icon: github
+#      text: GitHub
+#      href: https://github.com      
     - icon: envelope
       text: Email
       href: mailto:rams9795@gmail.com
@@ -35,7 +35,8 @@ sidebar: false
 listing:
   
   - id: overview
-    contents: "MNIST.qmd"
+    contents: 
+      - "projects/MNIST/MNIST.qmd"
     type: grid
     fields: [image, title]
     

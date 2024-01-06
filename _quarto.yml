@@ -26,9 +26,9 @@ website:
       - icon: linkedin
         text: Linkedin
         href: https://linkedin.com
-      - icon: github
-        text: GitHub
-        href: https://github.com
+#      - icon: github
+#        text: GitHub
+#        href: https://github.com
       - icon: envelope
         text: Email
         href: mailto:rams9795@gmail.com
@@ -39,7 +39,7 @@ website:
         file: overview.qmd
    
       - text: "Projects"
-        file: MNIST.qmd
+        file: projects/MNIST/MNIST.qmd
 
 
         
@@ -68,7 +68,7 @@ website:
       contents:
         - section: "Projects"
           contents:
-            - MNIST.qmd
+            - projects/MNIST/MNIST.qmd
             - project2.qmd
             - project3.qmd
  
