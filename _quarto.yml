@@ -19,7 +19,7 @@ website:
     title: 'Home'
   
     background: dark
-    foreground: secondary
+#    foreground: secondary
     search: false
 
     tools:
@@ -75,8 +75,13 @@ website:
 
 format:
   html:
-    theme: default
-    css: styles.css
+    theme: 
+      - cosmo
+      - styles.scss
+    fontsize: 16px
+#    monofont: Source Sans Pro, sans-serif
+
+  
 
     
     toc: true
