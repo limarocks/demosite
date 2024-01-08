@@ -465,9 +465,9 @@ Distance from digit 7 to digit 7 in our training set: 5223403.0</code></pre>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Predict on each test data point and time it!</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>t_before <span class="op">=</span> time.time()</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>test_predictions <span class="op">=</span> [NN_classifier(test_data[i]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(test_labels))]</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>t_after <span class="op">=</span> time.time()</span></code></pre></div>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#t_before = time.time()</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#test_predictions = [NN_classifier(test_data[i]) for i in range(len(test_labels))]</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">#t_after = time.time()</span></span></code></pre></div>
 </details>
 </div>
 <section id="compute-the-classification-time-of-nn" class="level2" data-number="6.1">
@@ -479,11 +479,8 @@ Distance from digit 7 to digit 7 in our training set: 5223403.0</code></pre>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Compute the classification time of NN classifier</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Classification time of NN classifier: </span><span class="sc">{</span><span class="bu">round</span>(t_after <span class="op">-</span> t_before, <span class="dv">2</span>)<span class="sc">}</span><span class="ss"> sec"</span>)</span></code></pre></div>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#print(f"Classification time of NN classifier: {round(t_after - t_before, 2)} sec")</span></span></code></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Classification time of NN classifier: 42.0 sec</code></pre>
-</div>
 </div>
 <p>The code takes about 60-100 seconds on 1.70 GHz Intel Core i7 Laptop.</p>
 </section>
@@ -492,14 +489,11 @@ Distance from digit 7 to digit 7 in our training set: 5223403.0</code></pre>
 <div class="cell" data-execution_count="12">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>err_positions <span class="op">=</span> np.not_equal(test_predictions, test_labels)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>error <span class="op">=</span> <span class="bu">float</span>(np.<span class="bu">sum</span>(err_positions))<span class="op">/</span><span class="bu">len</span>(test_labels)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Error rate of nearest neighbor classifier: </span><span class="sc">{</span>error <span class="op">*</span> <span class="dv">100</span><span class="sc">}</span><span class="ss"> %"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#err_positions = np.not_equal(test_predictions, test_labels)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#error = float(np.sum(err_positions))/len(test_labels)</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">#print(f"Error rate of nearest neighbor classifier: {error * 100} %")</span></span></code></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Error rate of nearest neighbor classifier: 4.6 %</code></pre>
-</div>
 </div>
 </section>
 </section>
@@ -533,41 +527,34 @@ Distance from digit 7 to digit 7 in our training set: 5223403.0</code></pre>
 <div class="cell" data-execution_count="13">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> BallTree</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Build nearest neighbor structure on training data</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>t_before <span class="op">=</span> time.time()</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>ball_tree <span class="op">=</span> BallTree(train_data)</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>t_after <span class="op">=</span> time.time()</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co">## Compute training time</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>t_training <span class="op">=</span> t_after <span class="op">-</span> t_before</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Time to build data structure (seconds): "</span>, <span class="bu">round</span>(t_training, <span class="dv">2</span>))</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="co">## Get nearest neighbor predictions on testing data</span></span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>t_before <span class="op">=</span> time.time()</span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>test_neighbors <span class="op">=</span> np.squeeze(ball_tree.query(test_data, k<span class="op">=</span><span class="dv">1</span>, return_distance<span class="op">=</span><span class="va">False</span>))</span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>ball_tree_predictions <span class="op">=</span> train_labels[test_neighbors]</span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>t_after <span class="op">=</span> time.time()</span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="co">## Compute testing time</span></span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>t_testing <span class="op">=</span> t_after <span class="op">-</span> t_before</span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Time to classify test set (seconds): "</span>, <span class="bu">round</span>(t_testing, <span class="dv">2</span>))</span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="co">## total classification time</span></span>
-<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Overall classififcation time of Ball tree algorithm (seconds):"</span>, <span class="bu">round</span>(t_training<span class="op">+</span>t_testing, <span class="dv">2</span>), end <span class="op">=</span> <span class="st">'</span><span class="ch">\n\n</span><span class="st">'</span>)</span>
-<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a><span class="co">## Verify that the predictions are the same</span></span>
-<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Ball tree produces same predictions as NN? "</span>, np.array_equal(test_predictions, ball_tree_predictions))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#from sklearn.neighbors import BallTree</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Build nearest neighbor structure on training data</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">#t_before = time.time()</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">#ball_tree = BallTree(train_data)</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co">#t_after = time.time()</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co">## Compute training time</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co">#t_training = t_after - t_before</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co">#print("Time to build data structure (seconds): ", round(t_training, 2))</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co">## Get nearest neighbor predictions on testing data</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="co">#t_before = time.time()</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="co">#test_neighbors = np.squeeze(ball_tree.query(test_data, k=1, return_distance=False))</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="co">#ball_tree_predictions = train_labels[test_neighbors]</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="co">#t_after = time.time()</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="co">## Compute testing time</span></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="co">#t_testing = t_after - t_before</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="co">#print("Time to classify test set (seconds): ", round(t_testing, 2))</span></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a><span class="co">## total classification time</span></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="co">#print("Overall classififcation time of Ball tree algorithm (seconds):", round(t_training+t_testing, 2), end = '\n\n')</span></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="co">## Verify that the predictions are the same</span></span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a><span class="co">#print("Ball tree produces same predictions as NN? ", np.array_equal(test_predictions, ball_tree_predictions))</span></span></code></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Time to build data structure (seconds):  0.53
-Time to classify test set (seconds):  5.61
-Overall classififcation time of Ball tree algorithm (seconds): 6.13
-
-Ball tree produces same predictions as NN?  True</code></pre>
-</div>
 </div>
 </section>
 <section id="k-d-tree-algorithm" class="level3" data-number="7.1.2">
@@ -575,40 +562,38 @@ Ball tree produces same predictions as NN?  True</code></pre>
 <div class="cell" data-execution_count="14">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KDTree</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Build nearest neighbor structure on training data</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>t_before <span class="op">=</span> time.time()</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>kd_tree <span class="op">=</span> KDTree(train_data)</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>t_after <span class="op">=</span> time.time()</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co">## Compute training time</span></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>t_training <span class="op">=</span> t_after <span class="op">-</span> t_before</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Time to build data structure (seconds): "</span>, <span class="bu">round</span>(t_training, <span class="dv">2</span>))</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="co">## Get nearest neighbor predictions on testing data</span></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>t_before <span class="op">=</span> time.time()</span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>test_neighbors <span class="op">=</span> np.squeeze(kd_tree.query(test_data, k<span class="op">=</span><span class="dv">1</span>, return_distance<span class="op">=</span><span class="va">False</span>))</span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>kd_tree_predictions <span class="op">=</span> train_labels[test_neighbors]</span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>t_after <span class="op">=</span> time.time()</span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="co">## Compute testing time</span></span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>t_testing <span class="op">=</span> t_after <span class="op">-</span> t_before</span>
-<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Time to classify test set (seconds): "</span>, <span class="bu">round</span>(t_testing, <span class="dv">2</span>))</span>
-<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a><span class="co">## total classification time</span></span>
-<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Overall classififcation time of k-d tree algorithm (seconds):"</span>, <span class="bu">round</span>(t_training<span class="op">+</span>t_testing, <span class="dv">2</span>), end <span class="op">=</span> <span class="st">'</span><span class="ch">\n\n</span><span class="st">'</span>)</span>
-<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a><span class="co">## Verify that the predictions are the same</span></span>
-<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"KD tree produces same predictions as NN? "</span>, np.array_equal(test_predictions, kd_tree_predictions))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">'''</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">from sklearn.neighbors import KDTree</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">## Build nearest neighbor structure on training data</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co">t_before = time.time()</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co">kd_tree = KDTree(train_data)</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co">t_after = time.time()</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co">## Compute training time</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co">t_training = t_after - t_before</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co">print("Time to build data structure (seconds): ", round(t_training, 2))</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co">## Get nearest neighbor predictions on testing data</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="co">t_before = time.time()</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="co">test_neighbors = np.squeeze(kd_tree.query(test_data, k=1, return_distance=False))</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="co">kd_tree_predictions = train_labels[test_neighbors]</span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="co">t_after = time.time()</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="co">## Compute testing time</span></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a><span class="co">t_testing = t_after - t_before</span></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a><span class="co">print("Time to classify test set (seconds): ", round(t_testing, 2))</span></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a><span class="co">## total classification time</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a><span class="co">print("Overall classififcation time of k-d tree algorithm (seconds):", round(t_training+t_testing, 2), end = '</span><span class="ch">\n\n</span><span class="co">')</span></span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a><span class="co">## Verify that the predictions are the same</span></span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a><span class="co">print("KD tree produces same predictions as NN? ", np.array_equal(test_predictions, kd_tree_predictions))</span></span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a><span class="co">'''</span></span></code></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Time to build data structure (seconds):  0.69
-Time to classify test set (seconds):  5.54
-Overall classififcation time of k-d tree algorithm (seconds): 6.23
-
-KD tree produces same predictions as NN?  True</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>'\nfrom sklearn.neighbors import KDTree\n\n## Build nearest neighbor structure on training data\nt_before = time.time()\nkd_tree = KDTree(train_data)\nt_after = time.time()\n\n## Compute training time\nt_training = t_after - t_before\nprint("Time to build data structure (seconds): ", round(t_training, 2))\n\n## Get nearest neighbor predictions on testing data\nt_before = time.time()\ntest_neighbors = np.squeeze(kd_tree.query(test_data, k=1, return_distance=False))\nkd_tree_predictions = train_labels[test_neighbors]\nt_after = time.time()\n\n## Compute testing time\nt_testing = t_after - t_before\nprint("Time to classify test set (seconds): ", round(t_testing, 2))\n\n## total classification time\n\nprint("Overall classififcation time of k-d tree algorithm (seconds):", round(t_training+t_testing, 2), end = \'\n\n\')\n\n## Verify that the predictions are the same\nprint("KD tree produces same predictions as NN? ", np.array_equal(test_predictions, kd_tree_predictions))\n'</code></pre>
 </div>
 </div>
 

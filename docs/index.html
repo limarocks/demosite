@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-image','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-image','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
       searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
     };
@@ -143,7 +143,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-about-trestles">
   <div class="about-entity">
     <img src="pictures/profilepic.JPG" class="about-image
-  round " style="height: 14em; width: 14em;">
+  round " style="height: 15em; width: 15em;">
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Sai Ram Kuchana</h1>
@@ -172,14 +172,24 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-anchor-id="projects">Projects</h2>
 <div id="listing-overview" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1704550584198" data-listing-reading-time-sort="8">
+<div class="g-col-1" data-index="0" data-categories="NumPy,Pandas">
 <a href="./projects/MNIST/MNIST.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="projects\MNIST\MNIST_files\figure-html\cell-6-output-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top">
+<img src="projects/MNIST/samplemnist.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Nearest neighbor for handwritten digit recognition
 </h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('NumPy'); return false;">
+NumPy
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Pandas'); return false;">
+Pandas
+</div>
+</div>
 </div>
 </div>
 </a>

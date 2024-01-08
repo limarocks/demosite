@@ -231,9 +231,9 @@ set.
 ```{python}
 ## Predict on each test data point and time it!
 
-t_before = time.time()
-test_predictions = [NN_classifier(test_data[i]) for i in range(len(test_labels))]
-t_after = time.time()
+#t_before = time.time()
+#test_predictions = [NN_classifier(test_data[i]) for i in range(len(test_labels))]
+#t_after = time.time()
 ```
 
 ## Compute the classification time of NN
@@ -247,7 +247,7 @@ Thus we should not expect testing to be very fast.
 ```{python}
 ## Compute the classification time of NN classifier
 
-print(f"Classification time of NN classifier: {round(t_after - t_before, 2)} sec")
+#print(f"Classification time of NN classifier: {round(t_after - t_before, 2)} sec")
 ```
 
 The code takes about 60-100 seconds on 1.70 GHz Intel Core i7 Laptop.
@@ -255,10 +255,10 @@ The code takes about 60-100 seconds on 1.70 GHz Intel Core i7 Laptop.
 ## Compute the error rate of NN
 
 ```{python}
-err_positions = np.not_equal(test_predictions, test_labels)
-error = float(np.sum(err_positions))/len(test_labels)
+#err_positions = np.not_equal(test_predictions, test_labels)
+#error = float(np.sum(err_positions))/len(test_labels)
 
-print(f"Error rate of nearest neighbor classifier: {error * 100} %")
+#print(f"Error rate of nearest neighbor classifier: {error * 100} %")
 ```
 
 # Improving nearest neighbors
@@ -317,38 +317,39 @@ data structures: the *ball tree* and the *k-d tree*.
 ### Ball tree algorithm
 
 ```{python}
-from sklearn.neighbors import BallTree
+#from sklearn.neighbors import BallTree
 
 ## Build nearest neighbor structure on training data
-t_before = time.time()
-ball_tree = BallTree(train_data)
-t_after = time.time()
+#t_before = time.time()
+#ball_tree = BallTree(train_data)
+#t_after = time.time()
 
 ## Compute training time
-t_training = t_after - t_before
-print("Time to build data structure (seconds): ", round(t_training, 2))
+#t_training = t_after - t_before
+#print("Time to build data structure (seconds): ", round(t_training, 2))
 
 ## Get nearest neighbor predictions on testing data
-t_before = time.time()
-test_neighbors = np.squeeze(ball_tree.query(test_data, k=1, return_distance=False))
-ball_tree_predictions = train_labels[test_neighbors]
-t_after = time.time()
+#t_before = time.time()
+#test_neighbors = np.squeeze(ball_tree.query(test_data, k=1, return_distance=False))
+#ball_tree_predictions = train_labels[test_neighbors]
+#t_after = time.time()
 
 ## Compute testing time
-t_testing = t_after - t_before
-print("Time to classify test set (seconds): ", round(t_testing, 2))
+#t_testing = t_after - t_before
+#print("Time to classify test set (seconds): ", round(t_testing, 2))
 
 ## total classification time
 
-print("Overall classififcation time of Ball tree algorithm (seconds):", round(t_training+t_testing, 2), end = '\n\n')
+#print("Overall classififcation time of Ball tree algorithm (seconds):", round(t_training+t_testing, 2), end = '\n\n')
 
 ## Verify that the predictions are the same
-print("Ball tree produces same predictions as NN? ", np.array_equal(test_predictions, ball_tree_predictions))
+#print("Ball tree produces same predictions as NN? ", np.array_equal(test_predictions, ball_tree_predictions))
 ```
 
 ### k-d tree algorithm
 
 ```{python}
+'''
 from sklearn.neighbors import KDTree
 
 ## Build nearest neighbor structure on training data
@@ -376,4 +377,5 @@ print("Overall classififcation time of k-d tree algorithm (seconds):", round(t_t
 
 ## Verify that the predictions are the same
 print("KD tree produces same predictions as NN? ", np.array_equal(test_predictions, kd_tree_predictions))
+'''
 ```

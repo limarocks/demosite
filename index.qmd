@@ -35,10 +35,12 @@ sidebar: false
 listing:
   
   - id: overview
-    contents: 
-      - "projects/MNIST/MNIST.qmd"
     type: grid
-    fields: [image, title]
+#    categories: unnumbered
+    contents: 
+#      - projects/MNIST/MNIST.qmd
+      - projects/MNIST/yamltest.yaml
+    fields: [title, image, categories, reading-time]
     
 ---
 
@@ -60,9 +62,3 @@ Here, I post my projects whenever i have done something and got time.
 
 :::{#overview}
 :::
-
-
-
-
-
-
